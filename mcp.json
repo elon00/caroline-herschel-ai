@@ -1,0 +1,54 @@
+{
+  "mcpServers": {
+    "caroline-herschel-ai": {
+      "command": "cargo",
+      "args": [
+        "run",
+        "--release",
+        "--quiet"
+      ],
+      "env": {
+        "RUST_LOG": "info",
+        "TITAN_PROTOCOL": "CAROLINEHERSCHEL",
+        "TARGET_CHAIN": "Sui",
+        "FIPS_203_LEVEL": "ML-KEM-768",
+        "FIPS_204_LEVEL": "ML-DSA-65"
+      },
+      "tools": [
+        {
+          "name": "sweep_cometary_ephemeris_vectors",
+          "description": "Detects diffuse cometary objects against stellar background via differential sweeping",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "declination_deg": {
+                "type": "number"
+              },
+              "right_ascension_hours": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "declination_deg"
+            ]
+          }
+        },
+        {
+          "name": "cross_index_flamsteed_stellar_catalog",
+          "description": "Resolves systemic astrometric catalog discrepancies across thousands of northern stars",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "star_id": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "star_id"
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
